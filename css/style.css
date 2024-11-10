@@ -91,7 +91,7 @@ body {
 }
 
 .animais-lista {
-  height: 370px;
+  height: 600px;
   overflow-y: scroll;
   grid-column: 2;
 }
@@ -228,5 +228,39 @@ body {
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
+  }
+}
+
+.js .js-accordion dt::after{
+  content: '⬎';
+  margin-left: 10px;
+}
+
+.js .js-accordion dt.ativo::after{
+  content: '⬏';
+}
+
+.js .js-accordion dd.ativo {
+  display: block;
+}
+
+.js .js-accordion dd {
+  display: none;
+}
+
+.js .js-accordion dd.ativo {
+  display: block;
+  animation: slidDown 1s forwards;
+}
+
+@keyframes slidDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 150px;
+
   }
 }
