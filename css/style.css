@@ -236,6 +236,10 @@ body {
   margin-left: 10px;
 }
 
+.js-accordion dt{
+  cursor: pointer;
+}
+
 .js .js-accordion dt.ativo::after{
   content: '⬏';
 }
