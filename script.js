@@ -73,3 +73,47 @@ console.log(listaPergunta)
 
 initAccordion()
 
+function initScroll() {
+    const linksInternos = document.querySelectorAll('.js-menu a[href^="#"')
+    console.log(linksInternos)
+    
+    //isso para podermos pegar o atributo de dentro do href de cada link interno, para podermos pegar cada section que tem tambem o mesmo ID.
+    linksInternos.forEach((item)=>{
+        console.log(item.getAttribute('href'))
+    })
+    
+    
+    function scrollSuave(event) {
+    
+        //basicamente para não ir em nenhum lugar quando clicamos
+        event.preventDefault()
+    
+        //pegar o href de do elemento que for clicado ou melhor do link, e usamos aqui o event, mas estamos falando de cada link que está sendo clicado, vai ser pego o atributo href
+        const href = event.currentTarget.getAttribute('href')
+        
+        //aqui pegamos o valor que vem da variavel de cima e colocamos dentro da variavel section, pois será o mesmo ID usado na html de cada section
+        const section = document.querySelector(href)
+    
+        //basicamente usamos esse metodo para pegar a section como elemento e trazer ela para ser mostrada com o scroll, e passamos o comportamento do scroll e o block start quer dizer que será no inicio do bloco da section
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        })
+    
+        //forma alternativa, essa é mais acessivel para outros navegadores.
+        //const topo = section.offsetTop
+        //window.scrollTo({
+        //  top: WebTransportError,
+        //  behavior: 'smooth',
+        //})
+    }
+    
+    linksInternos.forEach((link)=>{
+        link.addEventListener('click', scrollSuave)
+    
+    })
+}
+
+initScroll()
+
+
