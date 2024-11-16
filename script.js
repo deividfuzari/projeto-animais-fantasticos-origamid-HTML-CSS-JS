@@ -139,6 +139,7 @@ function initAnimacaoScroll() {
             if( isSectionVisible) {
                 section.classList.add('ativo')
             }else {
+                //aqui eu removo quando eu subo o scroll e meio que o conteudo some, ou melhor dizendo a section some da tela do usuario, ai faz a animação meio que apagando
                 section.classList.remove('ativo')
             }
         })
