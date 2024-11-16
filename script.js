@@ -117,3 +117,40 @@ function initScroll() {
 initScroll()
 
 
+function initAnimacaoScroll() {
+    //pegar todas as sections que vc quer animar
+    const sections = document.querySelectorAll('.js-scroll')
+    console.log(sections)
+
+    //para não ficar com tanto espaço entre as sections, temos que calcular um pouco mais que a metade da tela do usuario e animar a proxima section ai multiplicamos por 0.6 para dar 60% da tela do usuario.
+
+    const windowMetade = window.innerHeight * 0.6
+
+    function animaScroll() {
+        sections.forEach((section) =>{
+            //pegar o top da section que estamos, do valor dela para o topo
+            const sectionTop = section.getBoundingClientRect().top
+    
+            //aqui fazemos o top da section menos a um pouco mais que a altura que está dando da tela do usuario, para poder aparecer a section animada sem nenhum espaço vazio.
+            const isSectionVisible = (sectionTop - windowMetade) < 0
+    
+            //aqui fazemos vamos falar o momento em que será animado, quando o top da section bater no top da tela do usuario, ai quando ficar negativo é que chegou na section ai ele anima, por isso colocamos a comparação de menor que 0
+    
+            if( isSectionVisible) {
+                section.classList.add('ativo')
+            }else {
+                section.classList.remove('ativo')
+            }
+        })
+    }
+
+    //aqui chamamos a função para quando entrar na tela e não ter nenhuma section mostrando, ai precisamos chamar a função para ela jja mostrar a primeira section na tela.
+    animaScroll()
+
+    //usamos o objeto window pois estamos falando de scroll ai seria sobre a janela que estariamos falando quando bater o top da janela e etc...
+    window.addEventListener('scroll', animaScroll)
+    
+
+}
+initAnimacaoScroll()
+
